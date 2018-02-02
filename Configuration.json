@@ -1,0 +1,112 @@
+{
+  "screen_width": 10,
+  "screen_height": 10,
+  "offset_x": 7,
+  "offset_y": 7,
+  "panels": [
+    {
+      "name": "first panel",
+      "controls": [
+        {
+          "type": "DIAL",
+          "top": 3,
+          "bottom": 7,
+          "left": 3,
+          "right": 7,
+          "stick": "RIGHT"
+        },
+        {
+          "type": "BUTTON",
+          "name": "hold down",
+          "top": 0,
+          "bottom": 2,
+          "left": 0,
+          "right": 2,
+          "delay": 300,
+          "hold": true,
+          "toggle": false,
+          "pswitch": 0,
+          "keys": [
+            "R2"
+          ]
+        },
+        {
+          "type": "BUTTON",
+          "name": "auto-walk",
+          "top": 4,
+          "bottom": 6,
+          "left": 0,
+          "right": 2,
+          "delay": 300,
+          "hold": true,
+          "toggle": true,
+          "pswitch": 0,
+          "keys": [
+            "L_up"
+          ]
+        },
+        {
+          "type": "BUTTON",
+          "name": "press once",
+          "top": 0,
+          "bottom": 2,
+          "left": 2,
+          "right": 4,
+          "delay": 500,
+          "hold": false,
+          "toggle": false,
+          "pswitch": 0,
+          "keys": [
+            "A"
+          ]
+        },
+        {
+          "type": "BUTTON",
+          "name": "switch panels",
+          "top": 0,
+          "bottom": 2,
+          "left": 8,
+          "right": 10,
+          "delay": 1000,
+          "hold": false,
+          "toggle": false,
+          "pswitch": "second panel",
+          "keys": []
+        }
+      ]
+    },
+    {
+      "name": "second panel",
+      "controls": [
+        {
+          "type": "BUTTON",
+          "name": "switch back",
+          "top": 8,
+          "bottom": 10,
+          "left": 0,
+          "right": 2,
+          "delay": 1000,
+          "hold": false,
+          "toggle": false,
+          "pswitch": "first panel",
+          "keys": []
+        },
+        {
+          "type": "BUTTON",
+          "name": "exit",
+          "top": 8,
+          "bottom": 10,
+          "left": 8,
+          "right": 10,
+          "delay": 2000,
+          "hold": false,
+          "toggle": false,
+          "pswitch": "first panel",
+          "keys": [
+		    "QUIT"
+		  ]
+        }
+      ]
+    }
+  ]
+}

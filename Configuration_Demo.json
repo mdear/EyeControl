@@ -1,0 +1,56 @@
+{
+  "screen_width": 10,
+  "screen_height": 10,
+  "offset_x": 0,
+  "offset_y": 0,
+  "panels": [
+    {
+      "name": "first panel",
+      "controls": [
+        {
+          "type": "DIAL",
+          "top": 3,
+          "bottom": 7,
+          "left": 3,
+          "right": 7,
+          "delay": 0.01,
+          "stick": "RIGHT"
+        },
+        {
+          "type": "BUTTON",
+          "name": "hold down",
+          "top": 0,
+          "bottom": 2,
+          "left": 0,
+          "right": 2,
+          "delay": 0.01,
+          "actions": [
+            {
+              "type": "HOLD",
+              "key": "B"
+            }
+          ]
+        },
+        {
+          "type": "BUTTON",
+          "name": "press once",
+          "top": 0,
+          "bottom": 2,
+          "left": 2,
+          "right": 4,
+          "delay": 0.5,
+          "actions": [
+            {
+              "type": "PRESS",
+              "key": "A"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "second panel",
+      "controls": []
+    }
+  ]
+}
