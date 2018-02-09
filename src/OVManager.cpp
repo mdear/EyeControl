@@ -198,6 +198,9 @@ OVManager::OVManager(HWND* hWnd)
 	this->b_quit = false;
 	this->frametime = 0;
 	this->tobii_failure = false;
+	this->deadframes = 0;
+	this->last_x = 0;
+	this->last_y = 0;
 	numframes = 0;
 	curr_panel = 0;
 	//get screen resolution
@@ -338,16 +341,35 @@ bool OVManager::loop()
 			return false;
 		}
 		//use the gaze point data
+
+
+		//TODO: if invalid, pass old data and update counter, if counter passes 5 or so go to negative values.
+		//if valid, check if under speed, if it is, give accurate data, if it isn't, give previous point data.
+
 		if (latest_gaze_point.validity == TOBII_VALIDITY_VALID)	//checks if data is valid, otherwise skips a frame (may want to change so updates without valid data)
 		{
-			gazepos_x = latest_gaze_point.position_xy[0] * resolution_x - offset_x;	//updates gaze position and signals valid data this frame
-			gazepos_y = latest_gaze_point.position_xy[1] * resolution_y - offset_y;
+			deadframes = 0;
+			int newframe_x = latest_gaze_point.position_xy[0] * resolution_x - offset_x;	//finds gaze point
+			int newframe_y = latest_gaze_point.position_xy[1] * resolution_y - offset_y;
+			int dx = newframe_x - last_x;
+			int dy = newframe_y - last_y;
+			if (maxspeed * maxspeed > dx * dx + dy * dy)	//checks that frame is under the 'speed limit'
+			{
+				gazepos_x = newframe_x;
+				gazepos_y = newframe_y;
+			}
+			last_x = newframe_x;	//updates previous position
+			last_y = newframe_y;
 			gaze_valid = true;
 		}
 		else
 		{
-			gazepos_x = -1;
-			gazepos_y = -1;
+			deadframes++;
+			if (deadframes > 20)	//takes small amt of time to register 'not actually looking at screen'
+			{
+				gazepos_x = -1;
+				gazepos_y = -1;
+			}
 			gaze_valid = false;
 		}
 		if (panels[curr_panel]->update()) RedrawWindow(*hWnd, NULL, NULL, RDW_INVALIDATE | RDW_ERASE);	//updates all controls, if a redraw is needed forces the paint function
@@ -395,8 +417,7 @@ void OVManager::load()
 	file.read(json, length);
 	file.close();
 
-	Document doc;	//parse 
-	//doc.Parse(json);
+	Document doc;
 	if (doc.Parse<kParseStopWhenDoneFlag>(json).HasParseError())
 	{
 		fprintf(stderr, "\nError(offset %u): %s\n", (unsigned)doc.GetErrorOffset(), doc.GetParseError());
@@ -405,6 +426,7 @@ void OVManager::load()
 	}
 	float screen_width = doc["screen_width"].GetFloat();	//get parameters for screen size in user-definable dimensions, calculate multipliers to use for control dimensions
 	float screen_height = doc["screen_height"].GetFloat();
+	this->maxspeed = doc["max_speed"].GetInt();
 	float mult_x = (float)resolution_x / screen_width;
 	float mult_y = (float)resolution_y / screen_height;
 	offset_x = doc["offset_x"].GetInt();

@@ -43,4 +43,8 @@ private:
 	static const int framerate = 60;	//set this to desired framerate of system
 	int frametime;	//time value for next frame
 	int numframes;
+	int last_x;
+	int last_y;
+	int maxspeed;	//maximum distance eye can cover in pixels for data to be valid
+	int deadframes;	//number of frames invalid data has been read for
 };
