@@ -30,18 +30,21 @@ public:
 	static int gazepos_x;
 	static int gazepos_y;
 	static bool gaze_valid;
+	static int gazeDecay;	//set to amount of decay each frame
 private:
 	bool tobii_failure;	//flips to true if tobii screws up, causes program to immediately proceed to end
 	std::vector<OVPanel*> panels;
 	int curr_panel;
 	int resolution_x;
 	int resolution_y;
+	float decayRate;
 	int offset_x;	//in case of screen issues, offset calculations can be made
 	int offset_y;
 	bool b_quit;	//signals to quit at end of loop
 	HWND* hWnd;	//window instance
 	static const int framerate = 60;	//set this to desired framerate of system
 	int frametime;	//time value for next frame
+	int pframe;	//previous frame value
 	int numframes;
 	int last_x;
 	int last_y;

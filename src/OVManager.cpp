@@ -191,6 +191,7 @@ Color OVManager::active_color = Color(255, 255, 255, 0);
 int OVManager::gazepos_x = 0;
 int OVManager::gazepos_y = 0;
 bool OVManager::gaze_valid = false;
+int OVManager::gazeDecay = 0;
 
 OVManager::OVManager(HWND* hWnd)
 {
@@ -328,6 +329,7 @@ bool OVManager::loop()
 	if (clock() > frametime && !InterlockedCompareExchange(&thread_context.is_reconnecting, 0L, 0L))	//checks to make sure it isn't reconnecting and is within refresh rate
 	{
 		frametime = clock() + 1000 / framerate;	//set next time a frame should run
+		this->gazeDecay = (1 + decayRate) * (clock() - pframe);
 		tobii_error_t error = tobii_device_process_callbacks(device);
 		if (error == TOBII_ERROR_CONNECTION_FAILED)
 		{
@@ -374,6 +376,7 @@ bool OVManager::loop()
 		}
 		if (panels[curr_panel]->update()) RedrawWindow(*hWnd, NULL, NULL, RDW_INVALIDATE | RDW_ERASE);	//updates all controls, if a redraw is needed forces the paint function
 		ControlDriver::Update();
+		this->pframe = clock();
 	}
 	return !OVManager::b_quit;
 }
@@ -427,6 +430,7 @@ void OVManager::load()
 	float screen_width = doc["screen_width"].GetFloat();	//get parameters for screen size in user-definable dimensions, calculate multipliers to use for control dimensions
 	float screen_height = doc["screen_height"].GetFloat();
 	this->maxspeed = doc["max_speed"].GetInt();
+	this->decayRate = 1.3f;	//TODO: implement this in file
 	float mult_x = (float)resolution_x / screen_width;
 	float mult_y = (float)resolution_y / screen_height;
 	offset_x = doc["offset_x"].GetInt();

@@ -17,6 +17,7 @@ OVButton::OVButton(OVManager* mgr, std::string name, int top, int bottom, int le
 	this->toggle = false;
 	this->pchange = "";
 	this->delay = 0;
+	this->prevTime = 0;
 	this->timeFocus = 0;
 	this->timeToggle = 0;
 	this->timeFlash = -1;
@@ -86,14 +87,22 @@ bool OVButton::update()
 			case 0:
 				break;
 			case 1:
-				active = 0;	//reverse back to inactive
-				draw = true;
+				timeFocus += OVManager::gazeDecay;
+				if (timeFocus > time + delay)
+				{
+					active = 0;	//reverse back to inactive
+					draw = true;
+				}
 				break;
 			case 2:
 				break;
 			case 3:
-				active = 2;	//reverse back to active
-				draw = true;
+				timeFocus += OVManager::gazeDecay;
+				if (timeFocus > time + delay)
+				{
+					active = 2;	//reverse back to active
+					draw = true;
+				}
 				break;
 			}
 			if (flipToggle > 0) flipToggle--;	//reduce timer until flipping enabled again
@@ -139,11 +148,19 @@ bool OVButton::update()
 			case 0:
 				break;
 			case 1:
-				active = 0;
-				draw = true;
+				timeFocus += OVManager::gazeDecay;
+				if (timeFocus > time + delay)
+				{
+					active = 0;
+					draw = true;
+				}
 				break;
 			case 2:
-				active = 0;
+				timeFocus += OVManager::gazeDecay;
+				if (timeFocus > time + delay)
+				{
+					active = 0;
+				}
 				break;
 			}
 		}
