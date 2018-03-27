@@ -28,6 +28,16 @@ enum CKey
 	CK_R_down,
 	CK_R_left,
 	CK_R_right,
+	CK_0,
+	CK_1,
+	CK_2,
+	CK_3,
+	CK_4,
+	CK_5,
+	CK_6,
+	CK_7,
+	CK_8,
+	CK_9,
 	CK_QUIT
 };
 

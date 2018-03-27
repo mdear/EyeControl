@@ -100,12 +100,6 @@ INT WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, PSTR, INT iCmdShow)
 
 	while (OVM->loop())	//run system loop, if loop returns false exit conditions have been met
 	{
-		//RedrawWindow(hWnd, NULL, NULL, RDW_INVALIDATE | RDW_ERASE);	//TODO: place within framerate manager in other program (drawing too darn much), or possibly only trigger on changes
-
-
-
-
-
 		while (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
 		{
 

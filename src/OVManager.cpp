@@ -389,8 +389,8 @@ void OVManager::draw(HDC hdc)
 
 	Pen pen(Color(255, 255, 0, 0));	//debug code for eye position
 	pen.SetWidth(3);
-	graphics.DrawLine(&pen, latest_gaze_point.position_xy[0] * resolution_x - 10, latest_gaze_point.position_xy[1] * resolution_y - 10, latest_gaze_point.position_xy[0] * resolution_x + 10, latest_gaze_point.position_xy[1] * resolution_y + 10);
-	graphics.DrawLine(&pen, latest_gaze_point.position_xy[0] * resolution_x + 10, latest_gaze_point.position_xy[1] * resolution_y - 10, latest_gaze_point.position_xy[0] * resolution_x - 10, latest_gaze_point.position_xy[1] * resolution_y + 10);
+	//graphics.DrawLine(&pen, latest_gaze_point.position_xy[0] * resolution_x - 10, latest_gaze_point.position_xy[1] * resolution_y - 10, latest_gaze_point.position_xy[0] * resolution_x + 10, latest_gaze_point.position_xy[1] * resolution_y + 10);
+	//graphics.DrawLine(&pen, latest_gaze_point.position_xy[0] * resolution_x + 10, latest_gaze_point.position_xy[1] * resolution_y - 10, latest_gaze_point.position_xy[0] * resolution_x - 10, latest_gaze_point.position_xy[1] * resolution_y + 10);
 }
 
 void OVManager::changePanel(std::string name)
@@ -430,7 +430,7 @@ void OVManager::load()
 	float screen_width = doc["screen_width"].GetFloat();	//get parameters for screen size in user-definable dimensions, calculate multipliers to use for control dimensions
 	float screen_height = doc["screen_height"].GetFloat();
 	this->maxspeed = doc["max_speed"].GetInt();
-	this->decayRate = 1.3f;	//TODO: implement this in file
+	this->decayRate = doc["decay_rate"].GetFloat();
 	float mult_x = (float)resolution_x / screen_width;
 	float mult_y = (float)resolution_y / screen_height;
 	offset_x = doc["offset_x"].GetInt();
@@ -501,6 +501,16 @@ void OVManager::load()
 					else if (ky == "R_down") k = CK_R_down;
 					else if (ky == "R_left") k = CK_R_left;
 					else if (ky == "R_right") k = CK_R_right;
+					else if (ky == "0") k = CK_0;
+					else if (ky == "1") k = CK_1;
+					else if (ky == "2") k = CK_2;
+					else if (ky == "3") k = CK_3;
+					else if (ky == "4") k = CK_4;
+					else if (ky == "5") k = CK_5;
+					else if (ky == "6") k = CK_6;
+					else if (ky == "7") k = CK_7;
+					else if (ky == "8") k = CK_8;
+					else if (ky == "9") k = CK_9;
 					else if (ky == "QUIT") k = CK_QUIT;
 
 					keys.push_back(k);

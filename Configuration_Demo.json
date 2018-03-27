@@ -1,7 +1,7 @@
 {
   "screen_width": 10,
   "screen_height": 10,
-  "max_speed": 50,
+  "max_speed": 200,
   "offset_x": 7,
   "offset_y": 7,
   "panels": [

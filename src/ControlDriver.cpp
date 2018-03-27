@@ -48,7 +48,7 @@ bool ControlDriver::Init()
 	int stat = 0;
 	DevID = DEV_ID;
 	
-	ControlDriver::keys = std::vector<bool>(25);	//array to hold one of each key on controller, and stick directions
+	ControlDriver::keys = std::vector<bool>(35);	//array to hold one of each input
 	//ControlDriver::keys = 0;
 	ControlDriver::sticks = std::vector<std::pair<float, float>>();
 	ControlDriver::sticks.push_back(std::pair<float, float>(0.0f, 0.0f));
@@ -160,8 +160,8 @@ void ControlDriver::Update()
 		if (keys[i])
 		{
 			keys[i] = false;
-			if(i < CK_L_up)	btn = btn | (1 << i);
-			else
+			if (i < CK_L_up)	btn = btn | (1 << i);
+			else if (i < CK_0)
 			{
 				switch (i)	//directional key overrides
 				{
@@ -174,6 +174,31 @@ void ControlDriver::Update()
 				case CK_R_left: iReport.wAxisXRot = 384; break;
 				case CK_R_right: iReport.wAxisXRot = 32384; break;
 				}
+			}
+			else if(i < CK_QUIT)
+			{
+				INPUT ip;
+				ip.type = INPUT_KEYBOARD;
+				ip.ki.wScan = 0;
+				ip.ki.time = 0;
+				ip.ki.dwExtraInfo = 0;
+				switch (i)
+				{
+				case CK_0: ip.ki.wVk = 0x30; break;
+				case CK_1: ip.ki.wVk = 0x31; break;
+				case CK_2: ip.ki.wVk = 0x32; break;
+				case CK_3: ip.ki.wVk = 0x33; break;
+				case CK_4: ip.ki.wVk = 0x34; break;
+				case CK_5: ip.ki.wVk = 0x35; break;
+				case CK_6: ip.ki.wVk = 0x36; break;
+				case CK_7: ip.ki.wVk = 0x37; break;
+				case CK_8: ip.ki.wVk = 0x38; break;
+				case CK_9: ip.ki.wVk = 0x39; break;
+				}
+				ip.ki.dwFlags = 0;
+				SendInput(1, &ip, sizeof(INPUT));
+				ip.ki.dwFlags = KEYEVENTF_KEYUP;
+				SendInput(1, &ip, sizeof(INPUT));
 			}
 		}
 	} 
