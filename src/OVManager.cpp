@@ -188,9 +188,11 @@ static HANDLE thread_handle;
 Color OVManager::inactive_color = Color(255, 254, 255, 255);
 Color OVManager::focus_color = Color(255, 0, 255, 255);
 Color OVManager::active_color = Color(255, 255, 255, 0);
+std::vector<RECT> OVManager::rdraw = std::vector<RECT>();
 int OVManager::gazepos_x = 0;
 int OVManager::gazepos_y = 0;
 bool OVManager::gaze_valid = false;
+bool OVManager::redrawAll = false;
 int OVManager::gazeDecay = 0;
 
 OVManager::OVManager(HWND* hWnd)
@@ -374,7 +376,21 @@ bool OVManager::loop()
 			}
 			gaze_valid = false;
 		}
-		if (panels[curr_panel]->update()) RedrawWindow(*hWnd, NULL, NULL, RDW_INVALIDATE | RDW_ERASE);	//updates all controls, if a redraw is needed forces the paint function
+		panels[curr_panel]->update();	//updates all controls
+		if (OVManager::redrawAll)	//if full redraw is needed, redraws entire page
+		{
+			OVManager::redrawAll = false;
+			OVManager::rdraw.clear();
+			RedrawWindow(*hWnd, NULL, NULL, RDW_INVALIDATE | RDW_ERASE);	//updates all controls, if a full redraw is needed forces the paint function			
+		}																																			//HEY YOU! TODO: change this to a different variable so only full screen rewrites and stuff does the ENTIRE window, the list works by itself
+		else if(!OVManager::rdraw.empty())	//if individual buttons wish to update
+		{
+			for (size_t i = 0; i < OVManager::rdraw.size(); ++i)
+			{
+				RedrawWindow(*hWnd, &OVManager::rdraw[i], NULL, RDW_INVALIDATE | RDW_ERASE);
+			}
+			OVManager::rdraw.clear();
+		}
 		ControlDriver::Update();
 		this->pframe = clock();
 	}

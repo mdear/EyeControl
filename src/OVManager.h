@@ -24,12 +24,14 @@ public:
 	void changePanel(std::string name);	//change to the specified panel
 	void load();	//loads the configuration file into the controls
 	void quit() { this->b_quit = true; }	//trigger for buttons to signal quit
+	static void drawRect(RECT r) { OVManager::rdraw.push_back(r); }
 	static Gdiplus::Color inactive_color;
 	static Gdiplus::Color focus_color;
 	static Gdiplus::Color active_color;
 	static int gazepos_x;
 	static int gazepos_y;
 	static bool gaze_valid;
+	static bool redrawAll;
 	static int gazeDecay;	//set to amount of decay each frame
 private:
 	bool tobii_failure;	//flips to true if tobii screws up, causes program to immediately proceed to end
@@ -43,6 +45,7 @@ private:
 	bool b_quit;	//signals to quit at end of loop
 	HWND* hWnd;	//window instance
 	static const int framerate = 60;	//set this to desired framerate of system
+	static std::vector<RECT> rdraw;
 	int frametime;	//time value for next frame
 	int pframe;	//previous frame value
 	int numframes;

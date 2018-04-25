@@ -11,6 +11,11 @@ OVButton::OVButton(OVManager* mgr, std::string name, int top, int bottom, int le
 	this->corner_y = top;
 	this->center_x = (left + right) / 2;
 	this->center_y = (top + bottom) / 2;
+	this->rect = RECT();
+	this->rect.bottom = bottom + 5;
+	this->rect.top = top - 5;
+	this->rect.left = left - 5;
+	this->rect.right = right + 5;
 	this->height = bottom - top;
 	this->width = right - left;
 	this->hold = false;
@@ -33,7 +38,7 @@ void OVButton::setActions(int delay, bool hold, bool toggle, std::string pchange
 	this->keys = keys;
 }
 
-bool OVButton::update()
+void OVButton::update()
 {
 	int time = clock();
 	bool draw = false;
@@ -170,7 +175,7 @@ bool OVButton::update()
 			timeFlash = 5;
 		}
 	}
-	return draw;
+	if (draw) OVManager::drawRect(this->rect);
 }
 
 void OVButton::runActions()
@@ -219,12 +224,17 @@ OVDial::OVDial(OVManager* mgr, int top, int bottom, int left, int right, int sti
 	this->corner_y = top;
 	this->center_x = (left + right) / 2;
 	this->center_y = (top + bottom) / 2;
+	this->rect = RECT();
+	this->rect.bottom = bottom + 5;
+	this->rect.top = top - 5;
+	this->rect.left = left - 5;
+	this->rect.right = right + 5;
 	this->height = bottom - top;
 	this->width = right - left;
 	this->stick = stick;
 }
 
-bool OVDial::update()
+void OVDial::update()
 {
 	bool draw = false;
 	if (OVManager::gazepos_x > corner_x && OVManager::gazepos_x < corner_x + width && OVManager::gazepos_y > corner_y && OVManager::gazepos_y < corner_y + height)	//basic rectangle check before more expensive distance checks
@@ -250,7 +260,7 @@ bool OVDial::update()
 		active = 0;
 		ControlDriver::moveStick(stick, 0.0f, 0.0f);
 	}
-	return draw;
+	if (draw) OVManager::drawRect(this->rect);
 }
 
 void OVDial::draw(Graphics* g)
@@ -295,19 +305,17 @@ void OVPanel::add(OVControl* ctrl)
 	controls.push_back(ctrl);
 }
 
-bool OVPanel::update()
+void OVPanel::update()
 {
-	bool reply = false;
 	if (drawNow)	//flag for redrawing frame immediately once, used on panel load
 	{
-		reply = true;
+		OVManager::redrawAll = true;
 		drawNow = false;
 	}
 	for (size_t i = 0; i < controls.size(); ++i)
 	{
-		if (controls[i]->update()) reply = true;;
+		controls[i]->update();
 	}
-	return reply;
 }
 
 void OVPanel::draw(Graphics* g)

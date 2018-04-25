@@ -13,7 +13,7 @@ class OVManager;
 class OVControl	//main function for all control objects
 {
 public:
-	virtual bool update() = 0;	//update function, returns true if a redraw is needed
+	virtual void update() = 0;	//update function, returns true if a redraw is needed
 	virtual void draw(Graphics* g) = 0;	//draw function, passed down from GDI paint
 	void reset() { active = 0; timeFlash = -1; }	//used to prevent panel switch from leaving buttons on and such
 protected:
@@ -22,6 +22,7 @@ protected:
 	int center_y;
 	int corner_x;
 	int corner_y;
+	RECT rect;
 	int width;
 	int height;
 	int active;
@@ -33,7 +34,7 @@ class OVButton : public OVControl
 public:
 	OVButton(OVManager* mgr, std::string name, int top, int bottom, int left, int right);
 	void setActions(int delay, bool hold, bool toggle, std::string pchange, std::vector<CKey> keys);
-	bool update();
+	void update();
 	void runActions();
 	void draw(Graphics* g);
 private:
@@ -53,7 +54,7 @@ class OVDial : public OVControl
 {
 public:
 	OVDial(OVManager* mgr, int top, int bottom, int left, int right, int stick);
-	bool update();
+	void update();
 	void draw(Graphics* g);
 private:
 	int stick;
@@ -65,7 +66,7 @@ public:
 	OVPanel();
 	~OVPanel();
 	void add(OVControl* ctrl);
-	bool update();
+	void update();
 	void draw(Graphics* g);
 	void reset();
 	std::string name;
