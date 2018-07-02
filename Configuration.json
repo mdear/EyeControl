@@ -206,7 +206,7 @@
         },
         {
           "type": "BUTTON",
-          "name": "sneak",
+          "name": "sneak/cancel",
           "top": 5,
           "bottom": 7,
           "left": 7,
@@ -228,7 +228,7 @@
           "hold": false,
           "toggle": false,
           "pswitch": "main",
-          "keys": []
+          "keys": ["D_up"]
         },
         {
           "type": "BUTTON",
@@ -242,6 +242,19 @@
           "toggle": false,
           "pswitch": "main",
           "keys": []
+        },
+        {
+          "type": "BUTTON",
+          "name": "Jump And Build",
+          "top": 0,
+          "bottom": 2,
+          "left": 0,
+          "right": 2,
+          "delay": 100,
+          "hold": true,
+          "toggle": false,
+          "pswitch": 0,
+          "keys": ["R_down", "A", "L2"]
         }
       ]
     },
@@ -503,10 +516,10 @@
         {
           "type": "BUTTON",
           "name": "exit",
-          "top": 8,
-          "bottom": 10,
-          "left": 8,
-          "right": 10,
+          "top": 5,
+          "bottom": 7,
+          "left": 7,
+          "right": 9,
           "delay": 2000,
           "hold": false,
           "toggle": false,

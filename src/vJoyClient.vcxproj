@@ -288,6 +288,7 @@
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\Configuration.json" />
     <None Include="packages.config" />
     <None Include="Tobii\API-Reference.pdf" />
     <None Include="Tobii\SDK-License.pdf" />
