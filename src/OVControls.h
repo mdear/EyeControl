@@ -10,6 +10,14 @@ using namespace Gdiplus;
 
 class OVManager;
 
+enum OVMode
+{
+	Tap,
+	Hold,
+	Double,
+	TapAccel
+};
+
 class OVControl	//main function for all control objects
 {
 public:
@@ -33,13 +41,13 @@ class OVButton : public OVControl
 {
 public:
 	OVButton(OVManager* mgr, std::string name, int top, int bottom, int left, int right);
-	void setActions(int delay, bool hold, bool toggle, std::string pchange, std::vector<CKey> keys);
+	void setActions(int delay, OVMode mode, bool toggle, std::string pchange, std::vector<CKey> keys);
 	void update();
 	void runActions();
 	void draw(Graphics* g);
 private:
 	std::string name;
-	bool hold;
+	OVMode mode;
 	bool toggle;
 	std::string pchange;
 	std::vector<CKey> keys;
@@ -74,10 +82,3 @@ private:
 	bool drawNow;
 	std::vector<OVControl*> controls;
 };
-
-/*
-TODO:
-make the rest of the runActions stuff go, including the sticks
-remember to reset everything when you change panels, or check if that is in the panel change code
-add a 'QUIT' command to exit the whole thing
-*/

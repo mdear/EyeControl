@@ -18,7 +18,7 @@ OVButton::OVButton(OVManager* mgr, std::string name, int top, int bottom, int le
 	this->rect.right = right + 5;
 	this->height = bottom - top;
 	this->width = right - left;
-	this->hold = false;
+	this->mode = Tap;
 	this->toggle = false;
 	this->pchange = "";
 	this->delay = 0;
@@ -29,10 +29,10 @@ OVButton::OVButton(OVManager* mgr, std::string name, int top, int bottom, int le
 	this->flipToggle = 0;
 }
 
-void OVButton::setActions(int delay, bool hold, bool toggle, std::string pchange, std::vector<CKey> keys)
+void OVButton::setActions(int delay, OVMode mode, bool toggle, std::string pchange, std::vector<CKey> keys)
 {
 	this->delay = delay;
-	this->hold = hold;
+	this->mode = mode;
 	this->toggle = toggle;
 	this->pchange = pchange;
 	this->keys = keys;
@@ -113,7 +113,7 @@ void OVButton::update()
 			if (flipToggle > 0) flipToggle--;	//reduce timer until flipping enabled again
 		}
 
-		if (active > 1 && (time > timeToggle || hold))	//2 and 3 are both active states
+		if (active > 1 && (time > timeToggle || mode == Hold))	//2 and 3 are both active states
 		{
 			timeToggle = time + delay;
 			runActions();
@@ -122,7 +122,7 @@ void OVButton::update()
 	}
 	else	//non-toggle behavior
 	{
-		if (active == 2 && !hold)	//if not held down active phase ends after 1 frame
+		if (active == 2 && mode != Hold)	//if not held down active phase ends after 1 frame
 		{
 			active = 0;
 		}

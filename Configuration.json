@@ -25,7 +25,7 @@
           "left": 5.5,
           "right": 7.5,
           "delay": 100,
-          "hold": true,
+          "mode": "HOLD",
           "toggle": false,
           "pswitch": 0,
           "keys": ["L_up"]
@@ -38,7 +38,7 @@
           "left": 5.5,
           "right": 7.5,
           "delay": 100,
-          "hold": true,
+          "mode": "HOLD",
           "toggle": false,
           "pswitch": 0,
           "keys": ["L_down"]
@@ -51,7 +51,7 @@
           "left": 3,
           "right": 4,
           "delay": 100,
-          "hold": true,
+          "mode": "HOLD",
           "toggle": false,
           "pswitch": 0,
           "keys": ["L_left"]
@@ -64,7 +64,7 @@
           "left": 9,
           "right": 10,
           "delay": 100,
-          "hold": true,
+          "mode": "HOLD",
           "toggle": false,
           "pswitch": 0,
           "keys": ["L_right"]
@@ -77,7 +77,7 @@
           "left": 0,
           "right": 3,
           "delay": 500,
-          "hold": false,
+          "mode": "TAP",
           "toggle": false,
           "pswitch": 0,
           "keys": ["L2"]
@@ -90,7 +90,7 @@
           "left": 10,
           "right": 13,
           "delay": 300,
-          "hold": true,
+          "mode": "HOLD",
           "toggle": false,
           "pswitch": 0,
           "keys": ["R2"]
@@ -103,7 +103,7 @@
           "left": 0,
           "right": 3,
           "delay": 300,
-          "hold": true,
+          "mode": "HOLD",
           "toggle": true,
           "pswitch": 0,
           "keys": ["L3"]
@@ -116,7 +116,7 @@
           "left": 10,
           "right": 13,
           "delay": 300,
-          "hold": true,
+          "mode": "HOLD",
           "toggle": true,
           "pswitch": 0,
           "keys": ["L_up"]
@@ -129,7 +129,7 @@
           "left": 0,
           "right": 1,
           "delay": 1000,
-          "hold": false,
+          "mode": "TAP",
           "toggle": false,
           "pswitch": "special",
           "keys": []
@@ -142,7 +142,7 @@
           "left": 12,
           "right": 13,
           "delay": 1000,
-          "hold": false,
+          "mode": "TAP",
           "toggle": false,
           "pswitch": "item",
           "keys": []
@@ -160,7 +160,7 @@
           "left": 5,
           "right": 7,
           "delay": 1000,
-          "hold": false,
+          "mode": "TAP",
           "toggle": false,
           "pswitch": "menu",
           "keys": ["X"]
@@ -173,7 +173,7 @@
           "left": 7,
           "right": 9,
           "delay": 1000,
-          "hold": false,
+          "mode": "TAP",
           "toggle": false,
           "pswitch": "menu",
           "keys": ["Start"]
@@ -186,7 +186,7 @@
           "left": 9,
           "right": 11,
           "delay": 1000,
-          "hold": false,
+          "mode": "TAP",
           "toggle": false,
           "pswitch": "menu",
           "keys": []
@@ -199,7 +199,7 @@
           "left": 5,
           "right": 7,
           "delay": 1000,
-          "hold": false,
+          "mode": "TAP",
           "toggle": false,
           "pswitch": "main",
           "keys": ["D_down"]
@@ -212,7 +212,7 @@
           "left": 7,
           "right": 9,
           "delay": 1000,
-          "hold": false,
+          "mode": "TAP",
           "toggle": false,
           "pswitch": "main",
           "keys": ["B"]
@@ -225,7 +225,7 @@
           "left": 9,
           "right": 11,
           "delay": 1000,
-          "hold": false,
+          "mode": "TAP",
           "toggle": false,
           "pswitch": "main",
           "keys": ["D_up"]
@@ -238,7 +238,7 @@
           "left": 3,
           "right": 5,
           "delay": 1000,
-          "hold": false,
+          "mode": "TAP",
           "toggle": false,
           "pswitch": "main",
           "keys": []
@@ -251,7 +251,7 @@
           "left": 0,
           "right": 2,
           "delay": 100,
-          "hold": true,
+          "mode": "HOLD",
           "toggle": false,
           "pswitch": 0,
           "keys": ["R_down", "A", "L2"]
@@ -269,7 +269,7 @@
           "left": 5,
           "right": 8,
           "delay": 1000,
-          "hold": false,
+          "mode": "TAP",
           "toggle": false,
           "pswitch": 0,
           "keys": ["D_up"]
@@ -282,7 +282,7 @@
           "left": 5,
           "right": 8,
           "delay": 1000,
-          "hold": false,
+          "mode": "TAP",
           "toggle": false,
           "pswitch": 0,
           "keys": ["D_down"]
@@ -295,7 +295,7 @@
           "left": 0,
           "right": 2,
           "delay": 1000,
-          "hold": false,
+          "mode": "TAP",
           "toggle": false,
           "pswitch": 0,
           "keys": ["D_left"]
@@ -308,7 +308,7 @@
           "left": 11,
           "right": 13,
           "delay": 1000,
-          "hold": false,
+          "mode": "TAP",
           "toggle": false, 
           "pswitch": 0,
           "keys": ["D_right"]
@@ -321,7 +321,7 @@
           "left": 0,
           "right": 3,
           "delay": 1000,
-          "hold": false,
+          "mode": "TAP",
           "toggle": false,
           "pswitch": 0,
           "keys": ["L1"]
@@ -334,7 +334,7 @@
           "left": 10,
           "right": 13,
           "delay": 1000,
-          "hold": false,
+          "mode": "TAP",
           "toggle": false,
           "pswitch": 0,
           "keys": ["R1"]
@@ -347,7 +347,7 @@
           "left": 0,
           "right": 4,
           "delay": 1000,
-          "hold": false,
+          "mode": "TAP",
           "toggle": false,
           "pswitch": 0,
           "keys": ["A"]
@@ -360,7 +360,7 @@
           "left": 9,
           "right": 13,
           "delay": 1000,
-          "hold": false,
+          "mode": "TAP",
           "toggle": false,
           "pswitch": 0,
           "keys": ["B"]
@@ -373,7 +373,7 @@
           "left": 3,
           "right": 5,
           "delay": 1000,
-          "hold": false,
+          "mode": "TAP",
           "toggle": false,
           "pswitch": 0,
           "keys": ["X"]
@@ -386,7 +386,7 @@
           "left": 8,
           "right": 10,
           "delay": 1000,
-          "hold": false,
+          "mode": "TAP",
           "toggle": false,
           "pswitch": "main",
           "keys": []
@@ -404,7 +404,7 @@
           "left": 1,
           "right": 3,
           "delay": 500,
-          "hold": false,
+          "mode": "TAP",
           "toggle": false,
           "pswitch": "main",
           "keys": ["1"]
@@ -417,7 +417,7 @@
           "left": 3,
           "right": 5,
           "delay": 500,
-          "hold": false,
+          "mode": "TAP",
           "toggle": false,
           "pswitch": "main",
           "keys": ["2"]
@@ -430,7 +430,7 @@
           "left": 5,
           "right": 7,
           "delay": 500,
-          "hold": false,
+          "mode": "TAP",
           "toggle": false,
           "pswitch": "main",
           "keys": ["3"]
@@ -443,7 +443,7 @@
           "left": 7,
           "right": 9,
           "delay": 500,
-          "hold": false,
+          "mode": "TAP",
           "toggle": false,
           "pswitch": "main",
           "keys": ["4"]
@@ -456,7 +456,7 @@
           "left": 1,
           "right": 3,
           "delay": 500,
-          "hold": false,
+          "mode": "TAP",
           "toggle": false,
           "pswitch": "main",
           "keys": ["5"]
@@ -469,7 +469,7 @@
           "left": 3,
           "right": 5,
           "delay": 500,
-          "hold": false,
+          "mode": "TAP",
           "toggle": false,
           "pswitch": "main",
           "keys": ["6"]
@@ -482,7 +482,7 @@
           "left": 5,
           "right": 7,
           "delay": 500,
-          "hold": false,
+          "mode": "TAP",
           "toggle": false,
           "pswitch": "main",
           "keys": ["7"]
@@ -495,7 +495,7 @@
           "left": 7,
           "right": 9,
           "delay": 500,
-          "hold": false,
+          "mode": "TAP",
           "toggle": false,
           "pswitch": "main",
           "keys": ["8"]
@@ -508,7 +508,7 @@
           "left": 9,
           "right": 11,
           "delay": 500,
-          "hold": false,
+          "mode": "TAP",
           "toggle": false,
           "pswitch": "main",
           "keys": ["9"]
@@ -521,7 +521,7 @@
           "left": 7,
           "right": 9,
           "delay": 2000,
-          "hold": false,
+          "mode": "TAP",
           "toggle": false,
           "pswitch": "main",
           "keys": []

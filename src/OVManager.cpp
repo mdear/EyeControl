@@ -485,6 +485,12 @@ void OVManager::load()
 				std::string pswitch = "";
 				if ((*control)["pswitch"].IsString()) pswitch = (*control)["pswitch"].GetString();
 				int delay = (*control)["delay"].GetInt();
+				OVMode mode;
+				std::string md = (*control)["mode"].GetString();
+				if (md == "TAP") md = Tap;
+				if (md == "HOLD") md = Hold;
+				if (md == "DOUBLE") md = Double;
+				if (md == "TAPACCEL") md = TapAccel;
 				bool hold = (*control)["hold"].GetBool();
 				bool toggle = (*control)["toggle"].GetBool();
 				std::vector<CKey> keys;
@@ -531,7 +537,7 @@ void OVManager::load()
 
 					keys.push_back(k);
 				}
-				btn->setActions(delay, hold, toggle, pswitch, keys);
+				btn->setActions(delay, mode, toggle, pswitch, keys);
 			}
 		}
 	}
