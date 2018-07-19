@@ -2,6 +2,9 @@
 #include "OVManager.h"
 using namespace Gdiplus;
 
+const int MIN_DELAY = 10;
+const int DEC_DELAY = 10;
+
 OVButton::OVButton(OVManager* mgr, std::string name, int top, int bottom, int left, int right)
 {
 	this->mgr = mgr;
@@ -21,6 +24,7 @@ OVButton::OVButton(OVManager* mgr, std::string name, int top, int bottom, int le
 	this->mode = Tap;
 	this->toggle = false;
 	this->pchange = "";
+	this->odelay = 0;
 	this->delay = 0;
 	this->prevTime = 0;
 	this->timeFocus = 0;
@@ -31,7 +35,10 @@ OVButton::OVButton(OVManager* mgr, std::string name, int top, int bottom, int le
 
 void OVButton::setActions(int delay, OVMode mode, bool toggle, std::string pchange, std::vector<CKey> keys)
 {
+	if (mode == TapAccel)
+		int x = 5;
 	this->delay = delay;
+	this->odelay = delay;
 	this->mode = mode;
 	this->toggle = toggle;
 	this->pchange = pchange;
@@ -125,6 +132,8 @@ void OVButton::update()
 		if (active == 2 && mode != Hold)	//if not held down active phase ends after 1 frame
 		{
 			active = 0;
+			if (this->mode == TapAccel && delay > MIN_DELAY)
+				delay -= DEC_DELAY;	//reduces delay every firing
 		}
 		if (OVManager::gazepos_x > corner_x && OVManager::gazepos_x < corner_x + width && OVManager::gazepos_y > corner_y && OVManager::gazepos_y < corner_y + height)
 		{
@@ -157,6 +166,7 @@ void OVButton::update()
 				if (timeFocus > time + delay)
 				{
 					active = 0;
+					if (this->mode == TapAccel) delay = odelay;
 					draw = true;
 				}
 				break;

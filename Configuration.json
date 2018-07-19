@@ -268,8 +268,8 @@
           "bottom": 1,
           "left": 5,
           "right": 8,
-          "delay": 1000,
-          "mode": "TAP",
+          "delay": 500,
+          "mode": "TAPACCEL",
           "toggle": false,
           "pswitch": 0,
           "keys": ["D_up"]
@@ -281,8 +281,8 @@
           "bottom": 7,
           "left": 5,
           "right": 8,
-          "delay": 1000,
-          "mode": "TAP",
+          "delay": 500,
+          "mode": "TAPACCEL",
           "toggle": false,
           "pswitch": 0,
           "keys": ["D_down"]
@@ -294,8 +294,8 @@
           "bottom": 5,
           "left": 0,
           "right": 2,
-          "delay": 1000,
-          "mode": "TAP",
+          "delay": 500,
+          "mode": "TAPACCEL",
           "toggle": false,
           "pswitch": 0,
           "keys": ["D_left"]
@@ -307,8 +307,8 @@
           "bottom": 5,
           "left": 11,
           "right": 13,
-          "delay": 1000,
-          "mode": "TAP",
+          "delay": 500,
+          "mode": "TAPACCEL",
           "toggle": false, 
           "pswitch": 0,
           "keys": ["D_right"]

@@ -51,6 +51,7 @@ private:
 	bool toggle;
 	std::string pchange;
 	std::vector<CKey> keys;
+	int odelay;	//original delay, used for acceleration
 	int delay;
 	int prevTime;	//amount of time since last update
 	int timeFocus;	//amount of time eye is focused

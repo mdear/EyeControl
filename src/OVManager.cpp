@@ -487,10 +487,10 @@ void OVManager::load()
 				int delay = (*control)["delay"].GetInt();
 				OVMode mode;
 				std::string md = (*control)["mode"].GetString();
-				if (md == "TAP") md = Tap;
-				if (md == "HOLD") md = Hold;
-				if (md == "DOUBLE") md = Double;
-				if (md == "TAPACCEL") md = TapAccel;
+				if (md == "TAP") mode = Tap;
+				if (md == "HOLD") mode = Hold;
+				if (md == "DOUBLE") mode = Double;
+				if (md == "TAPACCEL") mode = TapAccel;
 				bool hold = (*control)["hold"].GetBool();
 				bool toggle = (*control)["toggle"].GetBool();
 				std::vector<CKey> keys;
