@@ -31,6 +31,7 @@ OVButton::OVButton(OVManager* mgr, std::string name, int top, int bottom, int le
 	this->timeToggle = 0;
 	this->timeFlash = -1;
 	this->flipToggle = 0;
+	this->dblTimer = -1;
 }
 
 void OVButton::setActions(int delay, OVMode mode, bool toggle, std::string pchange, std::vector<CKey> keys)
@@ -53,6 +54,11 @@ void OVButton::update()
 	{
 		timeFlash--;
 		runActions();
+	}
+	if (mode == Double)
+	{
+		if (dblTimer >= 0) dblTimer--;
+		if (dblTimer == 0) timeFlash = 5;
 	}
 	if (timeFlash == 0) draw = true;
 	if (toggle)	//toggle has special behavior
@@ -183,6 +189,7 @@ void OVButton::update()
 		if (active == 2)
 		{
 			timeFlash = 5;
+			if (mode == Double) dblTimer = 12;
 		}
 	}
 	if (draw) OVManager::drawRect(this->rect);

@@ -57,6 +57,7 @@ private:
 	int timeFocus;	//amount of time eye is focused
 	int timeToggle;	//used for recurring signals in toggle
 	int flipToggle;	//makes it so you don't go back and forth by just staring
+	int dblTimer;	//used for double-fire buttons
 };
 
 class OVDial : public OVControl
