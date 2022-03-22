@@ -1,0 +1,158 @@
+{
+  "screen_width": 13,
+  "screen_height": 7,
+  "max_speed": 200,
+  "decay_rate": 5,
+  "offset_x": 7,
+  "offset_y": 7,
+  "panels": [
+    {
+      "name": "main",
+      "controls": [
+        {
+          "type": "BUTTON",
+          "name": "^",
+          "top": 0,
+          "bottom": 1,
+          "left": 5.5,
+          "right": 7.5,
+          "delay": 1000,
+          "mode": "HOLD",
+          "toggle": false,
+          "pswitch": 0,
+          "keys": ["6"]
+        },
+        {
+          "type": "BUTTON",
+          "name": "V",
+          "top": 6,
+          "bottom": 7,
+          "left": 5.5,
+          "right": 7.5,
+          "delay": 1000,
+          "mode": "HOLD",
+          "toggle": false,
+          "pswitch": 0,
+          "keys": ["7"]
+        },
+        {
+          "type": "BUTTON",
+          "name": "<",
+          "top": 2.5,
+          "bottom": 4.5,
+          "left": 1,
+          "right": 2,
+          "delay": 1000,
+          "mode": "HOLD",
+          "toggle": false,
+          "pswitch": 0,
+          "keys": ["4"]
+        },
+        {
+          "type": "BUTTON",
+          "name": ">",
+          "top": 2.5,
+          "bottom": 4.5,
+          "left": 11,
+          "right": 12,
+          "delay": 1000,
+          "mode": "HOLD",
+          "toggle": false,
+          "pswitch": 0,
+          "keys": ["5"]
+        },
+        {
+          "type": "BUTTON",
+          "name": "LU",
+          "top": 1.5,
+          "bottom": 2.5,
+          "left": 5.5,
+          "right": 7.5,
+          "delay": 100,
+          "mode": "HOLD",
+          "toggle": false,
+          "pswitch": 0,
+          "keys": ["2"]
+        },
+        {
+          "type": "BUTTON",
+          "name": "LD",
+          "top": 4.5,
+          "bottom": 5.5,
+          "left": 5.5,
+          "right": 7.5,
+          "delay": 100,
+          "mode": "HOLD",
+          "toggle": false,
+          "pswitch": 0,
+          "keys": ["3"]
+        },
+        {
+          "type": "BUTTON",
+          "name": "LL",
+          "top": 2.5,
+          "bottom": 4.5,
+          "left": 4.5,
+          "right": 5.5,
+          "delay": 100,
+          "mode": "HOLD",
+          "toggle": false,
+          "pswitch": 0,
+          "keys": ["0"]
+        },
+        {
+          "type": "BUTTON",
+          "name": "LR",
+          "top": 2.5,
+          "bottom": 4.5,
+          "left": 7.5,
+          "right": 8.5,
+          "delay": 100,
+          "mode": "HOLD",
+          "toggle": false,
+          "pswitch": 0,
+          "keys": ["1"]
+        },
+        {
+          "type": "BUTTON",
+          "name": "Up",
+          "top": 0,
+          "bottom": 2,
+          "left": 0,
+          "right": 3,
+          "delay": 4000,
+          "mode": "HOLD",
+          "toggle": false,
+          "pswitch": 0,
+          "keys": ["8"]
+        },
+        {
+          "type": "BUTTON",
+          "name": "Down",
+          "top": 5,
+          "bottom": 7,
+          "left": 10,
+          "right": 13,
+          "delay": 4000,
+          "mode": "HOLD",
+          "toggle": false,
+          "pswitch": 0,
+          "keys": ["9"]
+        },
+        {
+          "type": "BUTTON",
+          "name": "auto-walk",
+          "top": 0,
+          "bottom": 1,
+          "left": 10,
+          "right": 13,
+          "delay": 300,
+          "mode": "HOLD",
+          "toggle": true,
+          "pswitch": 0,
+          "keys": ["6"]
+        }
+      ]
+    } 
+  ]
+}
