@@ -48,7 +48,7 @@ bool ControlDriver::Init()
 	int stat = 0;
 	DevID = DEV_ID;
 	
-	ControlDriver::keys = std::vector<bool>(35);	//array to hold one of each input
+	ControlDriver::keys = std::vector<bool>(37);	//array to hold one of each input
 	//ControlDriver::keys = 0;
 	ControlDriver::sticks = std::vector<std::pair<float, float>>();
 	ControlDriver::sticks.push_back(std::pair<float, float>(0.0f, 0.0f));
@@ -194,6 +194,8 @@ void ControlDriver::Update()
 				case CK_7: ip.ki.wVk = 0x37; break;
 				case CK_8: ip.ki.wVk = 0x38; break;
 				case CK_9: ip.ki.wVk = 0x39; break;
+				case CK_PLUS: ip.ki.wVk = VK_ADD; break;
+				case CK_MINUS: ip.ki.wVk = VK_SUBTRACT; break;
 				}
 				ip.ki.dwFlags = 0;
 				SendInput(1, &ip, sizeof(INPUT));

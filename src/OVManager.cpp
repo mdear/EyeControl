@@ -440,6 +440,7 @@ void OVManager::load()
 	if (doc.Parse<kParseStopWhenDoneFlag>(json).HasParseError())
 	{
 		fprintf(stderr, "\nError(offset %u): %s\n", (unsigned)doc.GetErrorOffset(), doc.GetParseError());
+
 		MessageBox(NULL, "Something went wrong in loading the configuration, please check your formatting.", "Load Failure", MB_OK);
 		return;
 	}
@@ -491,7 +492,6 @@ void OVManager::load()
 				if (md == "HOLD") mode = Hold;
 				if (md == "DOUBLE") mode = Double;
 				if (md == "TAPACCEL") mode = TapAccel;
-				bool hold = (*control)["hold"].GetBool();
 				bool toggle = (*control)["toggle"].GetBool();
 				std::vector<CKey> keys;
 				for (Value::ConstValueIterator key = (*control)["keys"].Begin(); key != (*control)["keys"].End(); ++key)
@@ -533,6 +533,8 @@ void OVManager::load()
 					else if (ky == "7") k = CK_7;
 					else if (ky == "8") k = CK_8;
 					else if (ky == "9") k = CK_9;
+					else if (ky == "+") k = CK_PLUS;
+					else if (ky == "-") k = CK_MINUS;
 					else if (ky == "QUIT") k = CK_QUIT;
 
 					keys.push_back(k);

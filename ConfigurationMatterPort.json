@@ -50,6 +50,32 @@
         },
         {
           "type": "BUTTON",
+          "name": "Z+",
+          "top": 5,
+          "bottom": 7,
+          "left": 0,
+          "right": 1.25,
+          "delay": 100,
+          "mode": "HOLD",
+          "toggle": false,
+          "pswitch": 0,
+          "keys": ["+"]
+        },
+        {
+          "type": "BUTTON",
+          "name": "Z-",
+          "top": 5,
+          "bottom": 7,
+          "left": 1.75,
+          "right": 3,
+          "delay": 100,
+          "mode": "HOLD",
+          "toggle": false,
+          "pswitch": 0,
+          "keys": ["-"]
+        },
+        {
+          "type": "BUTTON",
           "name": ">",
           "top": 2.5,
           "bottom": 4.5,
@@ -121,7 +147,7 @@
           "left": 0,
           "right": 3,
           "delay": 4000,
-          "mode": "HOLD",
+          "mode": "TAP",
           "toggle": false,
           "pswitch": 0,
           "keys": ["8"]
@@ -134,7 +160,7 @@
           "left": 10,
           "right": 13,
           "delay": 4000,
-          "mode": "HOLD",
+          "mode": "TAP",
           "toggle": false,
           "pswitch": 0,
           "keys": ["9"]
