@@ -533,8 +533,8 @@ void OVManager::load()
 					else if (ky == "7") k = CK_7;
 					else if (ky == "8") k = CK_8;
 					else if (ky == "9") k = CK_9;
-					else if (ky == "+") k = CK_PLUS;
-					else if (ky == "-") k = CK_MINUS;
+					else if (ky == "ZOOM_IN") k = CK_ZOOM_IN;
+					else if (ky == "ZOOM_OUT") k = CK_ZOOM_OUT;
 					else if (ky == "QUIT") k = CK_QUIT;
 
 					keys.push_back(k);

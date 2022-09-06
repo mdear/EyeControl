@@ -6,6 +6,7 @@ src/x64/
 *vcxproj*
 *.swo*
 *.swp*
+*.lnk*
 Debug/*
 Release/*
 *tlog*

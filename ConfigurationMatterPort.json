@@ -55,11 +55,11 @@
           "bottom": 7,
           "left": 0,
           "right": 1.25,
-          "delay": 100,
+          "delay": 30,
           "mode": "HOLD",
           "toggle": false,
           "pswitch": 0,
-          "keys": ["+"]
+          "keys": ["ZOOM_IN"]
         },
         {
           "type": "BUTTON",
@@ -68,11 +68,11 @@
           "bottom": 7,
           "left": 1.75,
           "right": 3,
-          "delay": 100,
+          "delay": 30,
           "mode": "HOLD",
           "toggle": false,
           "pswitch": 0,
-          "keys": ["-"]
+          "keys": ["ZOOM_OUT"]
         },
         {
           "type": "BUTTON",
@@ -94,7 +94,7 @@
           "bottom": 2.5,
           "left": 5.5,
           "right": 7.5,
-          "delay": 100,
+          "delay": 30,
           "mode": "HOLD",
           "toggle": false,
           "pswitch": 0,
@@ -107,7 +107,7 @@
           "bottom": 5.5,
           "left": 5.5,
           "right": 7.5,
-          "delay": 100,
+          "delay": 30,
           "mode": "HOLD",
           "toggle": false,
           "pswitch": 0,
@@ -120,7 +120,7 @@
           "bottom": 4.5,
           "left": 4.5,
           "right": 5.5,
-          "delay": 100,
+          "delay": 30,
           "mode": "HOLD",
           "toggle": false,
           "pswitch": 0,
@@ -133,7 +133,7 @@
           "bottom": 4.5,
           "left": 7.5,
           "right": 8.5,
-          "delay": 100,
+          "delay": 30,
           "mode": "HOLD",
           "toggle": false,
           "pswitch": 0,

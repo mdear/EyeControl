@@ -1,0 +1,46 @@
+Installation instructions:
+
+1. Download tarfile and expand into %USERPROFILE%/Downloads
+
+2. Download and install vJoy https://sourceforge.net/projects/vjoystick/
+
+3. Download and install XOutput at https://sourceforge.net/projects/xoutput/
+
+4. Add a link to XOutput to the start menu
+
+5. Configure vJoy and XOutput using instructions in help subdirectory.
+
+6. Launch File Explorer, navigate to the bin directory and right click on a
+   file explorer window specifying the following target:
+
+C:\Windows\System32\cmd.exe /c start "EyeControl" /high "%USERPROFILE%\Downloads\EyeControl-master\bin\EyeControl.exe"
+
+Set the icon to the provided EyeGazeControl.ico
+
+Set the starting directory to be %USERPROFILE%\Downloads\EyeControl-master\bin
+
+7. Right click on the new EyeControl link and add it to the start menu
+
+8. Move to the top level directory, right click on the
+   MatterPortKeyboardTransform.exe and add it to the start menu.
+
+9. Pick the app you want to control (Minecraft or Matterport) and copy the
+   appropriate Configuration file to the top level Configuration.json file.
+
+10. Start the app to be controlled
+
+11. Click on the XOutput start menu link and click on the virtual joystick
+
+12. Click on the MatterPortKeyboardTransform link if controlling a MatterPort
+    app
+
+13. Move focus to your app, then select the EyeControl link from the start
+    menu.
+
+
+
+NOTE on MatterPort support :
+The following strings are accepted in the keys array:
+ZOOM_IN  : Translates to mouse scroll wheel one click forward
+ZOOM_OUT : Translates to mouse scroll wheel one click backward
+
