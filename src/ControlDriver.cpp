@@ -48,7 +48,7 @@ bool ControlDriver::Init()
 	int stat = 0;
 	DevID = DEV_ID;
 	
-	ControlDriver::keys = std::vector<bool>(35);	//array to hold one of each input
+	ControlDriver::keys = std::vector<bool>(37);	//array to hold one of each input
 	//ControlDriver::keys = 0;
 	ControlDriver::sticks = std::vector<std::pair<float, float>>();
 	ControlDriver::sticks.push_back(std::pair<float, float>(0.0f, 0.0f));
@@ -179,9 +179,7 @@ void ControlDriver::Update()
 			{
 				INPUT ip;
 				ip.type = INPUT_KEYBOARD;
-				ip.ki.wScan = 0;
-				ip.ki.time = 0;
-				ip.ki.dwExtraInfo = 0;
+
 				switch (i)
 				{
 				case CK_0: ip.ki.wVk = 0x30; break;
@@ -194,11 +192,43 @@ void ControlDriver::Update()
 				case CK_7: ip.ki.wVk = 0x37; break;
 				case CK_8: ip.ki.wVk = 0x38; break;
 				case CK_9: ip.ki.wVk = 0x39; break;
+				case CK_ZOOM_IN: {
+					ip.type = INPUT_MOUSE;
+					ip.mi.dwFlags = MOUSEEVENTF_WHEEL;
+					ip.mi.mouseData = WHEEL_DELTA;
+					break;
+					}
+				case CK_ZOOM_OUT: {
+					ip.type = INPUT_MOUSE;
+					ip.mi.dwFlags = MOUSEEVENTF_WHEEL;
+					ip.mi.mouseData = -WHEEL_DELTA;
+					break;
+					}
 				}
-				ip.ki.dwFlags = 0;
-				SendInput(1, &ip, sizeof(INPUT));
-				ip.ki.dwFlags = KEYEVENTF_KEYUP;
-				SendInput(1, &ip, sizeof(INPUT));
+				if (ip.type == INPUT_KEYBOARD) {
+					ip.ki.wScan = 0;
+					ip.ki.time = 0;
+					ip.ki.dwExtraInfo = 0;
+					ip.ki.dwFlags = 0;
+					UINT s1 = SendInput(1, &ip, sizeof(INPUT));
+					DWORD err1 = GetLastError();
+					UINT s2 = ip.ki.dwFlags = KEYEVENTF_KEYUP;
+					SendInput(1, &ip, sizeof(INPUT));
+					DWORD err2 = GetLastError();
+					ip.ki.dwFlags = 0;
+				}
+				if (ip.type == INPUT_MOUSE) {
+					ip.mi.dx = 0;
+					ip.mi.dy = 0;
+					ip.mi.time = 0;
+					ip.mi.dwExtraInfo = 0;
+					UINT s1 = SendInput(1, &ip, sizeof(INPUT));
+					if (s1 != 1) {
+						DWORD err1 = GetLastError();
+						_tprintf("Failed to send mouse event %d, return %d, err %d.\n", ip.mi.mouseData, s1, err1);
+						/*MessageBox(NULL, "Failed to send mouse wheel event.", "Mouse wheel Failure", MB_OK);*/
+					}
+				}
 			}
 		}
 	} 

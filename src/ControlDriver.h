@@ -38,6 +38,8 @@ enum CKey
 	CK_7,
 	CK_8,
 	CK_9,
+	CK_ZOOM_IN,
+	CK_ZOOM_OUT,
 	CK_QUIT
 };
 

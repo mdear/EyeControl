@@ -1,3 +1,17 @@
 src/EyeControl.VC.db
 src/EyeControl.VC.VC.opendb
 src/x64/
+*.vs*
+*.sln
+*vcxproj*
+*.swo*
+*.swp*
+*.lnk*
+Debug/*
+Release/*
+*tlog*
+src/Debug
+src/Release
+src/EyeControl
+x64/*
+CppProperties.json
