@@ -192,6 +192,8 @@ void ControlDriver::Update()
 				case CK_7: ip.ki.wVk = 0x37; break;
 				case CK_8: ip.ki.wVk = 0x38; break;
 				case CK_9: ip.ki.wVk = 0x39; break;
+				case CK_PLUS: ip.ki.wVk = VK_OEM_PLUS; break;
+				case CK_MINUS: ip.ki.wVk = VK_OEM_MINUS; break;
 				case CK_ZOOM_IN: {
 					ip.type = INPUT_MOUSE;
 					ip.mi.dwFlags = MOUSEEVENTF_WHEEL;

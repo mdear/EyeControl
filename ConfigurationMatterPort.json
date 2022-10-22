@@ -59,7 +59,7 @@
           "mode": "HOLD",
           "toggle": false,
           "pswitch": 0,
-          "keys": ["ZOOM_IN"]
+          "keys": ["+"]
         },
         {
           "type": "BUTTON",
@@ -72,7 +72,7 @@
           "mode": "HOLD",
           "toggle": false,
           "pswitch": 0,
-          "keys": ["ZOOM_OUT"]
+          "keys": ["-"]
         },
         {
           "type": "BUTTON",
